@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors')
-const PORT = 3001
+const PORT = 3002
 
 const db = require('./database/database')
 
@@ -12,14 +12,12 @@ app.use(express.urlencoded({
 }))
 app.use(cors())
 
-// api to get all the tracks
-app.get('/api/tracks',db.getAllTracks);
+// api to get all the questions
+app.get('/api/admin/tracks',db.getAllQuestion);
 
-// api to delete tracks
-app.delete('/api/tracks/:id',db.deleteTrack);
+// api to delete question
+app.delete('/api/admin/tracks/:id',db.deleteTrack);
 
-//api to insert data in track table
-app.post('/api/tracks/',db.insertToFav);
 
 
 app.listen(PORT, () => console.log(`Hosted on server : ${PORT}`))
