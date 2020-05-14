@@ -12,12 +12,26 @@ app.use(express.urlencoded({
 }))
 app.use(cors())
 
+//------------------------ADMIN---------------------------
+
 // api to get all the questions
-app.get('/api/admin/tracks',db.getAllQuestion);
+app.get('/api/admin/questions',db.getAllQuestion);
 
-// api to delete question
-app.delete('/api/admin/tracks/:id',db.deleteTrack);
+// api to delete questions
+app.delete('/api/admin/questions/:id',db.deleteQuestion);
 
+// api to get all users
+app.get('/api/admin/allUsers',db.getAllUsers);
 
+// api to delete user
+app.delete('/api/admin/user/:id',db.deleteUser);
+
+//------------------------USER---------------------------
+
+// api to create user using signup
+app.post('/api/user/signup',db.createSignup);
+
+// api to login user
+app.post('/api/user/login',db.loginUser);
 
 app.listen(PORT, () => console.log(`Hosted on server : ${PORT}`))
