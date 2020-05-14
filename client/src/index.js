@@ -7,8 +7,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Playlist from './components/playList'
+import Quslist from './components/quslist'
 import Discogs from './components/discogs'
+import Users from './components/users'
 
 
 //function for routes to get specific path
@@ -18,10 +19,10 @@ function Routing() {
       <div>
         <ul>
           <li>
-            <Link to="/">Add Question</Link>           
+            <Link to="/users">View Students</Link>           
           </li>
           <li>
-            <Link to="/favourite-list">View List</Link>
+            <Link to="/qus-list">View All QuestionsList</Link>
           </li>
           <li>
             <Link to="/search">Add Question</Link>
@@ -34,8 +35,11 @@ function Routing() {
              <img className="back" alt="background"src="background.jpg"/>
            </div>
           </Route>
-          <Route path="/favourite-list">
-              <Playlist/>
+          <Route path="/users">
+              <Users/>
+          </Route>
+          <Route path="/qus-list">
+              <Quslist/>
           </Route>
           <Route path="/search">
               <Discogs/>
