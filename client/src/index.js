@@ -10,6 +10,8 @@ import {
 import Playlist from './components/playList'
 import Discogs from './components/discogs'
 
+
+//function for routes to get specific path
 function Routing() {
   return (
     <Router>
