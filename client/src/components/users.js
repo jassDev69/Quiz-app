@@ -15,20 +15,20 @@ export default  class Users extends React.Component {
          
   //calling the api to get favourite list data
     componentDidMount() {
-      //const url = 'http://localhost:3001/api/adminquestions'
-      // fetch(result)
-      //   .then(res => res.json())
-      //   .then(
-      //     (result) => {
-      //       this.setState({
-      //         userData: result
-      //       });
-      //     },
-      //   )   
+      const url = 'http://localhost:3002/api/admin/allUsers'
+      fetch(url)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              userData: result
+            });
+          },
+        )   
     }
     //delete from favourites
     deleteUser(id) {
-      const url = 'http://localhost:3001/api/tracks/'+id
+      const url = 'http://localhost:3002/api/admin/user/'+id
       fetch(url,{
         method:'DELETE',
         headers:{
@@ -47,7 +47,6 @@ export default  class Users extends React.Component {
         
         <div className="search">
               <h1>User List</h1>
-              {console.log(result)}
           {/* if their is no data */}
            {this.state.userData.length===0 &&
                <h3>Sorry, No User list till now :(</h3>
@@ -69,12 +68,12 @@ export default  class Users extends React.Component {
               </tr>
               </thead>
               <tbody>
-              {result.map((item,i) => (
+              {this.state.userData.map((item,i) => (
                 <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.Firstname}</td>
-                <td>{item.Lastname}</td>
-                <td>{item.username}</td>
+                <td>{i+1}</td>
+                <td>{item.first_name}</td>
+                <td>{item.last_name}</td>
+                <td>{item.email_id}</td>
                 <td>
                   <button className="btn" type="button" onClick={()=>{this.deleteUser(item.id)}}>DELETE</button>
                 </td>

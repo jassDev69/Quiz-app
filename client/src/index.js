@@ -8,7 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Quslist from './components/quslist'
-import Discogs from './components/discogs'
+import Addquestion from './components/addquestion'
 import Users from './components/users'
 
 
@@ -42,7 +42,7 @@ function Routing() {
               <Quslist/>
           </Route>
           <Route path="/search">
-              <Discogs/>
+              <Addquestion/>
           </Route>
         </Switch>
       </div>

@@ -9,7 +9,8 @@ export default  class Quslist extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        userData: []
+        userData: [],
+        option : ""
       };
     }
          
@@ -45,8 +46,8 @@ export default  class Quslist extends React.Component {
     render() {
         return (     
         
-        <div className="search">
-              <h1>Favourite List</h1>
+        <div className="search_quslist">
+              <h1>Questions List</h1>
               {console.log(result)}
           {/* if their is no data */}
            {this.state.userData.length===0 &&
@@ -56,6 +57,9 @@ export default  class Quslist extends React.Component {
           {this.state.userData.length>0 &&
               <h2>Total record : {this.state.userData.length}</h2>
           }  
+
+          {result.map((item,i) => (this.state.option = item.options.split(",")))}
+
             {result.length>0 &&
             <table>
               
@@ -72,9 +76,14 @@ export default  class Quslist extends React.Component {
                 <tr key={item.id}>
                 <td>{i+1}</td>
                 <td>{item.qusname}</td>
-                <td>{item.options}</td>
+                <td>1.{this.state.option[0]+" "}  
+                    2.{this.state.option[1]+" "} 
+                    3.{this.state.option[2]+" "} 
+                    4.{this.state.option[3]+" "}
+                </td>
                 <td>{item.correct}</td>
                 </tr>
+                
               ))}
               </tbody>
             </table>

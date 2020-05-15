@@ -20,7 +20,6 @@ table {
 
 td, th {
   border: 1px solid #787878;
-  text-align: left;
   padding: 8px;
   
 }
@@ -71,6 +70,10 @@ li a:hover:not(.active) {
 .search{
   margin: 10px auto;
     width: 70%;
+    text-align: center;
+}
+.search_quslist{
+  margin: 10px auto;
     text-align: center;
 }
 .search input{
