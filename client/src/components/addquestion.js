@@ -1,5 +1,10 @@
 import React from 'react';
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure({
+  autoClose: 1000,
+  draggable: false,
+});
 export default class Addquestion extends React.Component {
     constructor(props) {
       super(props);
@@ -19,7 +24,7 @@ export default class Addquestion extends React.Component {
     addToFav(){
       let insertData = {
           question_text : this.state.qus,
-          options : [this.state.opt1+","+this.state.opt2+","+this.state.opt3+","+this.state.opt4] ,
+          options : this.state.opt1+","+this.state.opt2+","+this.state.opt3+","+this.state.opt4 ,
           correct_option: this.state.correctans
         }
         console.log(insertData)
@@ -31,6 +36,12 @@ export default class Addquestion extends React.Component {
             'Content-Type': 'application/json'
         }
       })
+      .then(res => res.json())
+        .then(
+          (result) => {
+            toast(result.message);           
+          },
+        )
     }
 
     handleChange = (e) => {

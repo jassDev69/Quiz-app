@@ -20,10 +20,10 @@ function Routing() {
       <div>
         <ul>
           <li>
-            <Link to="/users">View Students</Link>           
+            <Link to="/users">User List</Link>           
           </li>
           <li>
-            <Link to="/qus-list">View All QuestionsList</Link>
+            <Link to="/qus-list">Question List</Link>
           </li>
           <li>
             <Link to="/search">Add Question</Link>

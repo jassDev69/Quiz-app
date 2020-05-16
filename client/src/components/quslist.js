@@ -29,8 +29,8 @@ export default  class Quslist extends React.Component {
         
     }
     //delete from favourites
-    deleteUser(id) {
-      const url = 'http://localhost:3002'+id
+    deletequs(id) {
+      const url = 'http://localhost:3002/api/admin/questions/'+id
       fetch(url,{
         method:'DELETE',
         headers:{
@@ -69,6 +69,7 @@ export default  class Quslist extends React.Component {
                 <td>Question</td>
                 <td>Options</td>
                 <td>Correct</td>            
+                <td>Actions</td>            
               </tr>
               </thead>
               <tbody>
@@ -82,6 +83,9 @@ export default  class Quslist extends React.Component {
                     4.{this.state.option[3]+" "}
                 </td>
                 <td>{item.correct_option}</td>
+                <td>
+                  <button className="btn" type="button" onClick={()=>{this.deletequs(item.id)}}>DELETE</button>
+                </td>
                 </tr>
                 
               ))}
