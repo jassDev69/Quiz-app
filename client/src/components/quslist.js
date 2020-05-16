@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 // const result = [{qusname:'what is you firstname' , options:'jassi,jaskaran,karan,prabh' , correct:'jassi'},
 //                 {qusname:'what is you lastname' , options:'singh,kaur,kamal,shubh' , correct:'singh'}
@@ -45,9 +45,11 @@ export default  class Quslist extends React.Component {
         )
     }
     render() {
+      {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
         return (     
         
         <div className="search_quslist">
+          {console.log(this.state.option)}
               <h1>Questions List</h1>
           {/* if their is no data */}
            {this.state.userData.length===0 &&
@@ -58,7 +60,7 @@ export default  class Quslist extends React.Component {
               <h2>Total record : {this.state.userData.length}</h2>
           }  
 
-          {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
+          
 
             {this.state.userData.length>0 &&
             <table>
@@ -77,10 +79,10 @@ export default  class Quslist extends React.Component {
                 <tr key={item.id}>
                 <td>{i+1}</td>
                 <td>{item.question_text}</td>
-                <td>1.{this.state.option[0]+" "}  
-                    2.{this.state.option[1]+" "} 
-                    3.{this.state.option[2]+" "} 
-                    4.{this.state.option[3]+" "}
+                <td>
+                  {this.state.option.map((opt,key) =>(
+                    opt===item.correct_option ? <div className="correct opt-value">{opt}</div> : <div className="wrong opt-value">{opt}</div>
+                  ))}
                 </td>
                 <td>{item.correct_option}</td>
                 <td>

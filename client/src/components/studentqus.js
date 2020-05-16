@@ -9,8 +9,7 @@ export default  class Studentqus extends React.Component {
       super(props);
       this.state = {
         userData: [],
-        length : 0,
-        opt : ""
+        len : 0
       };
     }
          
@@ -29,25 +28,21 @@ export default  class Studentqus extends React.Component {
     }
     nextQuestion()
     {
-      this.setstate.length+=1
+      this.state.len+=1
       this.forceUpdate()
     }
+
     render() {
-        return (
-          
+        return (     
         <div>
-          {result.map((item,i) => (this.state.opt = item.option.split(",")))}
-          {console.log("54"+this.state.option)}
             <h1>Quiz</h1>
-            {this.state.length < result.length &&
+            {this.state.len < result.length &&
                 <div>
-                    <h1>{result[this.state.length].qusname}</h1>
-                    {this.state.option.map((item) => (
-                       <input type="radio" name="question" value={item} />
-                    ))}
+                    <h1>{result[this.state.len].qusname}</h1>
                     <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>next</button>
                 </div>
             }
+            {this.state.len >= result.length && <h3>Quiz is finish :(</h3>}
           </div>
         );
     }
