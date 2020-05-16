@@ -14,18 +14,16 @@ export default class Addquestion extends React.Component {
         showElement : false,
       };
     }
-  // when add button is clicked
+    // ["india","uk"]
+
     addToFav(){
       let insertData = {
-          qus : this.state.qus,
-          option1 : this.state.opt1,
-          option2 : this.state.opt2,
-          option3 : this.state.opt3,
-          option4: this.state.opt4,
-          correctans: this.state.correctans
+          question_text : this.state.qus,
+          options : [this.state.opt1+","+this.state.opt2+","+this.state.opt3+","+this.state.opt4] ,
+          correct_option: this.state.correctans
         }
         console.log(insertData)
-      const url = 'http://localhost:3001/api/tracks'
+      const url = 'http://localhost:3002/api/admin/postQuestion'
       fetch(url,{
         method: 'POST',
         body: JSON.stringify(insertData),

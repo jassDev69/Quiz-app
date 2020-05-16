@@ -1,8 +1,6 @@
 import React from 'react';
 
-const result = [{id:'' , Firstname:'Jaspreet' , Lastname:'Singh' , username:'jassi619'},
-                {id:'' , Firstname:'Jaskaran' , Lastname:'Singh' , username:'jaskaran10'}
-                ]
+
 
 
 export default  class Users extends React.Component {
@@ -55,7 +53,7 @@ export default  class Users extends React.Component {
           {this.state.userData.length>0 &&
               <h2>Total record : {this.state.userData.length}</h2>
           }  
-            {result.length>0 &&
+            {this.state.userData.length>0 &&
             <table>
               
               <thead>

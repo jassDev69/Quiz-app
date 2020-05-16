@@ -10,6 +10,7 @@ import {
 import Quslist from './components/quslist'
 import Addquestion from './components/addquestion'
 import Users from './components/users'
+import Studentqus from './components/studentqus'
 
 
 //function for routes to get specific path
@@ -27,6 +28,9 @@ function Routing() {
           <li>
             <Link to="/search">Add Question</Link>
           </li>
+          <li>
+            <Link to="/quiz">Quiz</Link>
+          </li>
         </ul>
 
         <Switch>
@@ -43,6 +47,9 @@ function Routing() {
           </Route>
           <Route path="/search">
               <Addquestion/>
+          </Route>
+          <Route path="/quiz">
+              <Studentqus/>
           </Route>
         </Switch>
       </div>
