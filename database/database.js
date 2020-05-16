@@ -40,7 +40,7 @@ const createSignup = (request, response) => {
       response.end()
     }
     else{
-      response.status(200).json('You have successfully signup')
+      response.status(200).json({status: 200, message: 'You have successfully signed up'});
       response.end()
     }
   })
@@ -57,13 +57,15 @@ const getAllUsers = (request, response) => {
 }
 const loginUser = (request, response) => {
 
-console.log(JSON.stringify(request.body))
-  // pool.query('SELECT * FROM users WHERE email_id='+request.body.email, (error, results) => {
-  //   if (error) {
-  //     throw error
-  //   }
-  //   response.status(200).json('Welcome')
-  // })
+  pool.query('SELECT * FROM users WHERE email_id=$1',[request.body.email], (error, results) => {
+    if (error) {
+      throw error
+    }
+    if(results.rows.length)
+    response.status(200).json({status: 200, message: 'Welcome',data : results.rows})
+    else
+    response.status(200).json({status: 200, message: "User doesn't exist"})
+  })
 }
 // Deleting record from user table in DB
 const deleteUser = (request, response) => {

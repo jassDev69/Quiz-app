@@ -14,6 +14,9 @@ app.use(cors())
 
 //------------------------ADMIN---------------------------
 
+app.get('/', function (req, res) {
+    res.send('hello welcome')
+  })
 // api to get all the questions
 app.get('/api/admin/questions',db.getAllQuestion);
 
