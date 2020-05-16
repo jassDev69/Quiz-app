@@ -34,7 +34,14 @@ app.delete('/api/admin/user/:id',db.deleteUser);
 // api to create user using signup
 app.post('/api/user/signup',db.createSignup);
 
+// api to get all the questions
+app.get('/api/user/questions',db.getAllUserQuestion);
+
 // api to login user
 app.post('/api/user/login',db.loginUser);
+
+// api to login user
+app.post('/api/user/postQuestion',db.postQuestion);
+
 
 app.listen(PORT, () => console.log(`Hosted on server : ${PORT}`))
