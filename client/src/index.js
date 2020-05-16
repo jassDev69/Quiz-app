@@ -36,7 +36,7 @@ function Routing() {
         <Switch>
           <Route exact path="/">
            <div>
-             <img className="back" alt="background"src="background.jpg"/>
+             <img className="back" alt="background"src="background.png" height="700px"/>
            </div>
           </Route>
           <Route path="/users">
