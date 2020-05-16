@@ -1,15 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+//import "./Login.css";
+import styles from "./Login.css";
 
 function Login() {
   return (
     <form>
-      <label htmlFor="UserName">user Name</label>
+      <label htmlFor="UserName">UserName</label>
       <input type="text" id="UserName" name="UserName"></input>
       <br></br>
       <label htmlFor="Password">Password</label>
       <input type="password" id="password" name="password"></input> <br></br>
-      <input type="submit" value="submit"></input>
+      <input type="submit" value="Submit"></input>
     </form>
   );
 }
