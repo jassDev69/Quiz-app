@@ -1,9 +1,20 @@
-const Pool = require('pg').Pool
+const Pool = require('pg').Pool\
+
+//local
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'Quiz',
+//   password: 'admin321',
+//   port: 5432,
+// });
+
+//hosted site
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Quiz',
-  password: 'admin321',
+  user: 'atstepvrlpyghn',
+  host: 'ec2-52-7-39-178.compute-1.amazonaws.com',
+  database: 'd9lcr7cpsa39ph',
+  password: '7ec57440334ed3205f54f9b6d7e67e5bc3ec4ae56cc0e5a89abb2a6d7e0c5dc0',
   port: 5432,
 });
 
