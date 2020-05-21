@@ -16,7 +16,7 @@ export default  class Quslist extends React.Component {
          
   //calling the api to get favourite list data
     componentDidMount() {
-      const url = 'http://localhost:3002/api/admin/questions'
+      const url = 'https://backend-quiz.herokuapp.com/api/admin/questions'
       fetch(url)
         .then(res => res.json())
         .then(
@@ -28,9 +28,9 @@ export default  class Quslist extends React.Component {
         )   
         
     }
-    //delete from favourites
+
     deletequs(id) {
-      const url = 'http://localhost:3002/api/admin/questions/'+id
+      const url = 'https://backend-quiz.herokuapp.com/api/admin/questions/'+id
       fetch(url,{
         method:'DELETE',
         headers:{

@@ -28,7 +28,7 @@ export default class Addquestion extends React.Component {
           correct_option: this.state.correctans
         }
         console.log(insertData)
-      const url = 'http://localhost:3002/api/admin/postQuestion'
+      const url = 'https://backend-quiz.herokuapp.com/api/admin/postQuestion'
       fetch(url,{
         method: 'POST',
         body: JSON.stringify(insertData),

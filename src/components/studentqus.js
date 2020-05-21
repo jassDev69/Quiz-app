@@ -9,13 +9,14 @@ export default  class Studentqus extends React.Component {
       super(props);
       this.state = {
         userData: [],
-        len : 0
+        len : 0 ,
+        option : ""
       };
     }
          
   //calling the api to get favourite list data
     componentDidMount() {
-      const url = 'http://localhost:3002/api/admin/allUsers'
+      const url = 'https://backend-quiz.herokuapp.com/api/user/questions'
       fetch(url)
         .then(res => res.json())
         .then(
@@ -28,17 +29,23 @@ export default  class Studentqus extends React.Component {
     }
     nextQuestion()
     {
-      this.state.len+=1
+      this.setstate.len+=1
       this.forceUpdate()
     }
 
     render() {
+      {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
         return (     
         <div>
             <h1>Quiz</h1>
             {this.state.len < result.length &&
                 <div>
-                    <h1>{result[this.state.len].qusname}</h1>
+                    <h1>{result[this.state.len].qusname}</h1>                   
+                    {this.state.option.map((opt,key) =>(
+                      <div>
+                        <input type="radio" name="qus" value={opt} /> {opt}
+                      </div>
+                    ))}
                     <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>next</button>
                 </div>
             }
