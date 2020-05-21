@@ -32,11 +32,5 @@
 [0516/181659.640:ERROR:crash_report_database_win.cc(445)] failed to read records
 [0521/140202.410:ERROR:file_io.cc(89)] ReadExactly: expected 10136, observed 0
 [0521/140202.410:ERROR:crash_report_database_win.cc(445)] failed to read records
-[0521/144947.121:ERROR:file_io.cc(89)] ReadExactly: expected 10136, observed 0
-[0521/144947.121:ERROR:crash_report_database_win.cc(445)] failed to read records
-[0521/145131.320:ERROR:file_io.cc(89)] ReadExactly: expected 10136, observed 0
-[0521/145131.321:ERROR:crash_report_database_win.cc(445)] failed to read records
-[0521/150006.705:ERROR:file_io.cc(89)] ReadExactly: expected 10136, observed 0
-[0521/150006.706:ERROR:crash_report_database_win.cc(445)] failed to read records
-[0521/175532.100:ERROR:file_io.cc(89)] ReadExactly: expected 10136, observed 0
-[0521/175532.100:ERROR:crash_report_database_win.cc(445)] failed to read records
+[0521/181841.017:ERROR:file_io.cc(89)] ReadExactly: expected 10136, observed 0
+[0521/181841.017:ERROR:crash_report_database_win.cc(445)] failed to read records

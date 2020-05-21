@@ -77,7 +77,7 @@ li a:hover:not(.active) {
     text-align: center;
 }
 .search input{
-  width: 40%;
+  /* width: 40%; */
   padding: 12px;
 }
 .search .btn{
@@ -102,9 +102,13 @@ li a:hover:not(.active) {
   width: 70%;
   margin: 18px auto;
 }
-search a {
+.search a {
   margin-top:10px
 }
+.search .btn{
+  margin-top:10px;
+}
+
 .correct{
   background-color: green;
 }
