@@ -48,9 +48,9 @@ function Routing() {
           <Route path="/search">
               <Addquestion/>
           </Route>
-          {/* <Route path="/quiz">
+          <Route path="/quiz">
               <Studentqus/>
-          </Route> */}
+          </Route>
         </Switch>
       </div>
     </Router>

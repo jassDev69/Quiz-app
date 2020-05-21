@@ -44,8 +44,14 @@ export default  class Quslist extends React.Component {
           },
         )
     }
+
+    calloptions(index)
+    {
+      this.state.option = this.state.userData[index].options.split(",")
+    }
+
     render() {
-      {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
+      // {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
         return (     
         
         <div className="search_quslist">
@@ -80,6 +86,7 @@ export default  class Quslist extends React.Component {
                 <td>{i+1}</td>
                 <td>{item.question_text}</td>
                 <td>
+                  {this.calloptions(i)}
                   {this.state.option.map((opt,key) =>(
                     opt===item.correct_option ? <div className="correct opt-value">{opt}</div> : <div className="wrong opt-value">{opt}</div>
                   ))}
