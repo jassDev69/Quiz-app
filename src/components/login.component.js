@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 
 export default class Login extends Component {
+    componentDidMount() {
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ emailId:'' })
+        };
+        fetch('https://backend-quiz.herokuapp.com/api/user/login', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+    }
     render() {
         return (
             <form>
@@ -8,7 +19,7 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" id="emailId" className="form-control" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group">
@@ -23,7 +34,7 @@ export default class Login extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block" onClick={this.componentDidMount()}>Submit</button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
