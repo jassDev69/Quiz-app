@@ -10,7 +10,7 @@ import {
 import Quslist from './components/quslist'
 import Addquestion from './components/addquestion'
 import Users from './components/users'
-import Studentqus from './components/studentqus'
+// import Studentqus from './components/studentqus'
 
 
 //function for routes to get specific path
@@ -23,10 +23,10 @@ function Routing() {
             <Link to="/users">User List</Link>           
           </li>
           <li>
-            <Link to="/qus-list">Question List</Link>
+            <Link to="/questions">Question List</Link>
           </li>
           <li>
-            <Link to="/search">Add Question</Link>
+            <Link to="/add-question">Add Question</Link>
           </li>
           <li>
             <Link to="/quiz">Quiz</Link>
@@ -42,10 +42,10 @@ function Routing() {
           <Route path="/users">
               <Users/>
           </Route>
-          <Route path="/qus-list">
+          <Route path="/questions">
               <Quslist/>
           </Route>
-          <Route path="/search">
+          <Route path="/add-question">
               <Addquestion/>
           </Route>
           {/* <Route path="/quiz">
