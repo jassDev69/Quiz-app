@@ -13,7 +13,7 @@ export default  class Users extends React.Component {
          
   //calling the api to get favourite list data
     componentDidMount() {
-      const url = 'http://localhost:3002/api/admin/allUsers'
+      const url = 'https://backend-quiz.herokuapp.com/api/admin/allUsers'
       fetch(url)
         .then(res => res.json())
         .then(
@@ -26,7 +26,7 @@ export default  class Users extends React.Component {
     }
     //delete from favourites
     deleteUser(id) {
-      const url = 'http://localhost:3002/api/admin/user/'+id
+      const url = 'https://backend-quiz.herokuapp.com/api/admin/user/'+id
       fetch(url,{
         method:'DELETE',
         headers:{
@@ -70,7 +70,7 @@ export default  class Users extends React.Component {
                 <tr key={item.id}>
                 <td>{i+1}</td>
                 <td>{item.first_name}</td>
-                <td>{item.last_name}</td>
+                <td>{item.last_name || 'NA'}</td>
                 <td>{item.email_id}</td>
                 <td>
                   <button className="btn" type="button" onClick={()=>{this.deleteUser(item.id)}}>DELETE</button>
