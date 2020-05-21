@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 
 export default class SignUp extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {firstName: '',lastName: '',emailId:'',password:''};
 
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value:event.target.firstName});
+        this.setState({value:event.target.lastName});
+        this.setState({value:event.target.emailId});
+        this.setState({value:event.target.password});
+    }
+
+    handleSubmit(event) {
+        alert('All data was submitted : ' + this.state.firstName + this.state.lastName + this.state.emailId + this.state.password);
+        event.preventDefault();
+    }
     //
     componentDidMount() {
 
@@ -22,22 +40,22 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>First name</label>
-                    <input id="firstName" type="text" className="form-control" placeholder="First name" required />
+                    <input value={this.state.firstName} id="firstName" type="text" className="form-control" placeholder="First name" required />
                 </div>
 
                 <div className="form-group">
                     <label>Last name</label>
-                    <input id="lastName" type="text" className="form-control" placeholder="Last name" required />
+                    <input  value={this.state.lastName} id="lastName" type="text" className="form-control" placeholder="Last name" required />
                 </div>
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" id="emailId" className="form-control" placeholder="Enter email" required />
+                    <input value={this.state.emailId} type="email" id="emailId" className="form-control" placeholder="Enter email" required />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" className="form-control" placeholder="Enter password" required />
+                    <input value={this.state.password} type="password" id="password" className="form-control" placeholder="Enter password" required />
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.componentDidMount()}>Sign Up</button>

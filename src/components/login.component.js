@@ -1,6 +1,22 @@
 import React, { Component } from "react";
 
 export default class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {emailId: ''};
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({emailId: event.target.emailId});
+    }
+
+    handleSubmit(event) {
+        alert('All data was submitted: ' + this.state.emailId);
+        event.preventDefault();
+    }
     componentDidMount() {
 
         const requestOptions = {
@@ -19,7 +35,7 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" id="emailId" className="form-control" placeholder="Enter email" />
+                    <input value={this.state.emailId} type="email" id="emailId" className="form-control" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group">
