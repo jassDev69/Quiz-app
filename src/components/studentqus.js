@@ -11,7 +11,8 @@ export default  class Studentqus extends React.Component {
       this.state = {
         userData: [],
         len : 0 ,
-        option : ""
+        option : "" ,
+        selectedoption : ""
       };
     }
          
@@ -40,6 +41,12 @@ export default  class Studentqus extends React.Component {
       this.state.option = this.state.userData[this.state.len].options.split(",")
     }
 
+    handleOptionChange = (changeEvent) => {
+      this.setState({
+        selectedoption: changeEvent.target.value
+      });
+    }
+
     render() {
       // eslint-disable-next-line no-lone-blocks
       // {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
@@ -53,11 +60,11 @@ export default  class Studentqus extends React.Component {
                                                     
                     {this.state.option.map((opt,key) =>(
                       <div>
-                        <input type="radio" name="qus" value={opt} /> {opt}
+                        <input type="radio" name="qus" value={opt} onChange={this.handleOptionChange}/> {opt}
                       </div>
                     ))}
-
-                    <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>next</button>
+                    {this.state.len < this.state.userData.length-1 ? <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>next</button> : <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>finish</button>}
+                    {console.log(this.state.selectedoption)}
                 </div>
             }
         </div>
