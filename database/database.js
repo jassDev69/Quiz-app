@@ -79,7 +79,7 @@ const loginUser = (request, response) => {
     if(results.rows.length)
     response.status(200).json({status: 200, message: 'Welcome',data : results.rows})
     else
-    response.status(200).json({status: 200, message: "User doesn't exist"})
+    response.status(400).json({status: 400, message: "User doesn't exist"})
   })
 }
 // Deleting record from user table in DB
