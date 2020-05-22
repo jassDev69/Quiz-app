@@ -72,7 +72,7 @@ const getAllUsers = (request, response) => {
 }
 const loginUser = (request, response) => {
 
-  pool.query('SELECT * FROM users WHERE email_id=$1',[request.body.email], (error, results) => {
+  pool.query('SELECT * FROM users WHERE email_id=$1 AND password=$2',[request.body.email,request.body.password], (error, results) => {
     if (error) {
       throw error
     }
