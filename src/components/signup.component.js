@@ -26,7 +26,7 @@ export default class SignUp extends Component {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ firstName:'', lastName:'',emailId:'',password:'' })
+            body: JSON.stringify({ firstName:'Harshil', lastName:'Parikh',emailId:'misterharshil@gmail.com',password:'lol123' })
         };
         fetch('https://backend-quiz.herokuapp.com/api/user/signup', requestOptions)
             .then(response => response.json())
