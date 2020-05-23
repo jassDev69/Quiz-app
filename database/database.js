@@ -1,22 +1,22 @@
 const Pool = require('pg').Pool
 
 //local
-// const pool = new Pool({
-//   user: 'postgres',
-//   host: 'localhost',
-//   database: 'Quiz',
-//   password: 'admin321',
-//   port: 5432,
-// });
-
-//hosted site
 const pool = new Pool({
-  user: 'hmmhttvxjjtjoc',
-  host: 'ec2-18-232-143-90.compute-1.amazonaws.com',
-  database: 'd84kshiodli11c',
-  password: '41fbd1d4417fac6fb83b37c0b5652fd571ea56cd803e1cc800cf0599d00a9154',
+  user: 'postgres',
+  host: 'localhost',
+  database: 'Quiz',
+  password: 'admin321',
   port: 5432,
 });
+
+//hosted site
+// const pool = new Pool({
+//   user: 'hmmhttvxjjtjoc',
+//   host: 'ec2-18-232-143-90.compute-1.amazonaws.com',
+//   database: 'd84kshiodli11c',
+//   password: '41fbd1d4417fac6fb83b37c0b5652fd571ea56cd803e1cc800cf0599d00a9154',
+//   port: 5432,
+// });
 
 // fetching question data from DB
 const getAllQuestion = (request, response) => {
@@ -101,15 +101,14 @@ const getAllUserQuestion = (request, response) => {
   })
 }
 
-
-// const userScores = (request, response) => {
-//   pool.query('SELECT id,question_text,options FROM question', (error, results) => {
-//     if (error) {
-//       throw error
-//     }
-//     response.status(200).json(results.rows)
-//   })
-// }
+const userScores = (request, response) => {
+  pool.query('select SUM(count) from score where user_id = &1 ',[request.body.id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json({status: 200,data : results.rows})
+  })
+}
 
 
 
@@ -136,18 +135,12 @@ const postQuestion = (request, response) => {
 //submit question
 const submitQuestion = (request, response) => {  
   pool.query('SELECT * FROM question WHERE id=$1',[request.body.selectedID], (error, results) => {
-    console.log(request.body.selectedID)
-    console.log(request.body.optionSelectd)
-    console.log(results.rows)
-    console.log(results.rows)
     if(results.rows.length){
       if(results.rows.correct_option == request.body.optionSelectd){
           const query = {
             text: 'INSERT INTO score(user_id, count)VALUES($1, $2)',
             values: [request.body.user_id,10],
           }
-          console.log(query);
-
           pool.query(query, (error, results) => {
             console.log(results);
             if (error) {
@@ -163,6 +156,8 @@ const submitQuestion = (request, response) => {
 
   })
 }
+
+
 module.exports = {
   getAllQuestion,
   deleteQuestion,
@@ -172,5 +167,6 @@ module.exports = {
   deleteUser,
   getAllUserQuestion,
   postQuestion,
-  submitQuestion
+  submitQuestion,
+  userScores
 }

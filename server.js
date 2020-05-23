@@ -49,7 +49,7 @@ app.post('/api/user/login',db.loginUser);
 app.post('/api/user/submitQuestion',db.submitQuestion);
 
 // api to get user score
-// app.post('/api/user/scores',db.userScores);
+app.post('/api/user/scores',db.userScores);
 
 
 
