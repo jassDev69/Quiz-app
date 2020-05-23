@@ -1,22 +1,22 @@
 const Pool = require('pg').Pool
 
 //local
-// const pool = new Pool({
-//   user: 'postgres',
-//   host: 'localhost',
-//   database: 'Quiz',
-//   password: 'admin321',
-//   port: 5432,
-// });
-
-//hosted site
 const pool = new Pool({
-  user: 'hmmhttvxjjtjoc',
-  host: 'ec2-18-232-143-90.compute-1.amazonaws.com',
-  database: 'd84kshiodli11c',
-  password: '41fbd1d4417fac6fb83b37c0b5652fd571ea56cd803e1cc800cf0599d00a9154',
+  user: 'postgres',
+  host: 'localhost',
+  database: 'Quiz',
+  password: 'admin321',
   port: 5432,
 });
+
+//hosted site
+// const pool = new Pool({
+//   user: 'hmmhttvxjjtjoc',
+//   host: 'ec2-18-232-143-90.compute-1.amazonaws.com',
+//   database: 'd84kshiodli11c',
+//   password: '41fbd1d4417fac6fb83b37c0b5652fd571ea56cd803e1cc800cf0599d00a9154',
+//   port: 5432,
+// });
 
 // fetching question data from DB
 const getAllQuestion = (request, response) => {
@@ -101,6 +101,18 @@ const getAllUserQuestion = (request, response) => {
   })
 }
 
+
+// const userScores = (request, response) => {
+//   pool.query('SELECT id,question_text,options FROM question', (error, results) => {
+//     if (error) {
+//       throw error
+//     }
+//     response.status(200).json(results.rows)
+//   })
+// }
+
+
+
 //Post question
 const postQuestion = (request, response) => {  
       const query = {
@@ -121,6 +133,32 @@ const postQuestion = (request, response) => {
       })
 }
 
+//submit question
+const submitQuestion = (request, response) => {  
+  pool.query('SELECT * FROM question WHERE id=$1',[request.body.selectedID], (error, results) => {
+    if(results.rows.length){
+      if(results.rows.correct_option == request.body.optionSelectd){
+          const query = {
+            text: 'INSERT INTO score(user_id, count)VALUES($1, $2)',
+            values: [14,10],
+          }
+          console.log(query);
+
+          pool.query(query, (error, results) => {
+            console.log(results);
+            if (error) {
+              throw error
+            }
+            else{
+              response.status(200).json({status: 200, message: 'Question Posted'});
+              response.end()
+            }
+          })
+      }
+    }
+
+  })
+}
 module.exports = {
   getAllQuestion,
   deleteQuestion,
@@ -129,5 +167,6 @@ module.exports = {
   getAllUsers,
   deleteUser,
   getAllUserQuestion,
-  postQuestion
+  postQuestion,
+  submitQuestion
 }
