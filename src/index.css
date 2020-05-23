@@ -71,3 +71,17 @@ body, html, .App, #root, .auth-wrapper {
 .forgot-password a {
   color: #167bff;
 }
+.errorMsg {
+  color: #cc0000;
+  margin-bottom: 12px;
+}
+.sucessMsg {
+  color: #6B8E23;
+  margin-bottom: 10px;
+}
+.options div{
+  padding: 5px;
+}
+.options button{
+  margin-top:20px;
+}
