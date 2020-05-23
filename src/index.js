@@ -28,9 +28,9 @@ function Routing() {
           <li>
             <Link to="/add-question">Add Question</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/quiz">Quiz</Link>
-          </li>
+          </li> */}
         </ul>
 
         <Switch>
