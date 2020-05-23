@@ -32,7 +32,7 @@ app.delete('/api/admin/user/:id',db.deleteUser);
 // api to post user
 app.post('/api/admin/postQuestion',db.postQuestion);
 
-app.post('/api/admin/submitQuestion',db.submitQuestion);
+
 
 //------------------------USER---------------------------
 
@@ -44,6 +44,9 @@ app.get('/api/user/questions',db.getAllUserQuestion);
 
 // api to login user
 app.post('/api/user/login',db.loginUser);
+
+
+app.post('/api/user/submitQuestion',db.submitQuestion);
 
 // api to get user score
 // app.post('/api/user/scores',db.userScores);
