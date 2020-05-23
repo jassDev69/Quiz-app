@@ -1,10 +1,5 @@
 import React from 'react';
 
-// const result = [{qusname:'what is you firstname' , options:'jassi,jaskaran,karan,prabh' , correct:'jassi'},
-//                 {qusname:'what is you lastname' , options:'singh,kaur,kamal,shubh' , correct:'singh'}
-//                 ]
-
-
 export default  class Quslist extends React.Component {
     constructor(props) {
       super(props);
@@ -76,7 +71,7 @@ export default  class Quslist extends React.Component {
                 <td>Sr. No</td>
                 <td>Question</td>
                 <td>Options</td>
-                <td>Correct</td>            
+                {/* <td>Correct</td>             */}
                 <td>Actions</td>            
               </tr>
               </thead>
@@ -91,7 +86,7 @@ export default  class Quslist extends React.Component {
                     opt===item.correct_option ? <div className="correct opt-value">{opt}</div> : <div className="wrong opt-value">{opt}</div>
                   ))}
                 </td>
-                <td>{item.correct_option}</td>
+                {/* <td>{item.correct_option}</td> */}
                 <td>
                   <button className="btn" type="button" onClick={()=>{this.deletequs(item.id)}}>DELETE</button>
                 </td>
