@@ -82,7 +82,7 @@ export default class SignUp extends Component {
             .then(data => {
                 if(data.status === 200){
                     alert(data.message);
-                    localStorage.setItem('loggedIn', true);
+                    localStorage.setItem('loggedData', JSON.stringify(data.data));
                     this.setState({
                         redirect: true
                       });

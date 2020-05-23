@@ -26,7 +26,7 @@ function App() {
             <ul className="navbar-nav ml-auto">
               {!isloggedin &&
                 <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
+                <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
               </li>
               }
               {!isloggedin &&
