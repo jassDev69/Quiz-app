@@ -72,7 +72,7 @@ const getAllUsers = (request, response) => {
 }
 const loginUser = (request, response) => {
 
-  pool.query('SELECT * FROM users WHERE email_id=$1 AND password=$2',[request.body.email,request.body.password], (error, results) => {
+  pool.query('SELECT id, first_name,last_name,email_id FROM users WHERE email_id=$1 AND password=$2',[request.body.email,request.body.password], (error, results) => {
     if (error) {
       throw error
     }
@@ -140,7 +140,7 @@ const submitQuestion = (request, response) => {
       if(results.rows.correct_option == request.body.optionSelectd){
           const query = {
             text: 'INSERT INTO score(user_id, count)VALUES($1, $2)',
-            values: [14,10],
+            values: [$1,$2],
           }
           console.log(query);
 
