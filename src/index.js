@@ -10,7 +10,7 @@ import {
 import Quslist from './components/quslist'
 import Addquestion from './components/addquestion'
 import Users from './components/users'
-// import Studentqus from './components/studentqus'
+ import Studentqus from './components/studentqus'
 
 
 //function for routes to get specific path
@@ -48,9 +48,9 @@ function Routing() {
           <Route path="/add-question">
               <Addquestion/>
           </Route>
-          {/* <Route path="/quiz">
+          <Route path="/quiz">
               <Studentqus/>
-          </Route> */}
+          </Route>
         </Switch>
       </div>
     </Router>

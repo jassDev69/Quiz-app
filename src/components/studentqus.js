@@ -12,7 +12,7 @@ export default  class Studentqus extends React.Component {
         userData: [],
         len : 0 ,
         option : "" ,
-        selectedoption : ""
+        selectedoption : ''
       };
     }
          
@@ -29,24 +29,51 @@ export default  class Studentqus extends React.Component {
           },
         )   
     }
-    nextQuestion()
+    nextQuestion (e)
+    {    
+      let insertData = {
+        optionSelected : this.state.selectedoption,
+        selectedID : e
+        }
+        const url = 'https://backend-quiz.herokuapp.com/api/user/submitQuestion'
+        fetch(url,{
+          method: 'POST',
+          body: JSON.stringify(insertData),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.json())
+          .then(
+            (result) => {
+             if(result.status ===200){
+              this.forceUpdate()
+              this.state.len+=1
+              this.setState({
+                selectedoption: ''
+              });
+             }
+            },
+          )
+    }
+
+    callnull()
     {
-      // eslint-disable-next-line no-lone-blocks
-      this.state.len+=1
-      this.forceUpdate()
+      this.setState({selectedoption:''})
     }
 
     calloptions()
     {
       this.state.option = this.state.userData[this.state.len].options.split(",")
     }
-
+   
     handleOptionChange = (changeEvent) => {
       this.setState({
         selectedoption: changeEvent.target.value
       });
+      console.log(this.state.selectedoption)
     }
-
+  
     render() {
       // eslint-disable-next-line no-lone-blocks
       // {this.state.userData.map((item,i) => (this.state.option = item.options.split(",")))}
@@ -59,12 +86,13 @@ export default  class Studentqus extends React.Component {
                     <h1>{this.state.userData[this.state.len].question_text}</h1>
                                                     
                     {this.state.option.map((opt,key) =>(
-                      <div>
-                        <input type="radio" name="qus" value={opt} onChange={this.handleOptionChange}/> {opt}
+                      <div key={key}>
+                        <input type="radio" name={opt} value={opt} onChange={this.handleOptionChange} checked={opt ===this.state.selectedoption} /> {opt}
                       </div>
                     ))}
-                    {this.state.len < this.state.userData.length-1 ? <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>next</button> : <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>finish</button>}
-                    {console.log(this.state.selectedoption)}
+
+                    {this.state.len < this.state.userData.length-1 ? <button className="btn" type="button" onClick={()=>{this.nextQuestion(this.state.userData[this.state.len].id)}}>next</button> : <button className="btn" type="button" onClick={()=>{this.nextQuestion()}}>finish</button>}
+                    {this.state.selectedoption}
                 </div>
             }
         </div>
