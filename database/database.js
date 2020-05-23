@@ -136,11 +136,15 @@ const postQuestion = (request, response) => {
 //submit question
 const submitQuestion = (request, response) => {  
   pool.query('SELECT * FROM question WHERE id=$1',[request.body.selectedID], (error, results) => {
+    console.log(request.body.selectedID)
+    console.log(request.body.optionSelectd)
+    console.log(results.rows)
+    console.log(results.rows)
     if(results.rows.length){
       if(results.rows.correct_option == request.body.optionSelectd){
           const query = {
             text: 'INSERT INTO score(user_id, count)VALUES($1, $2)',
-            values: [$1,$2],
+            values: [request.body.user_id,10],
           }
           console.log(query);
 
