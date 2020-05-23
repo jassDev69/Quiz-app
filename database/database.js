@@ -102,7 +102,7 @@ const getAllUserQuestion = (request, response) => {
 }
 
 const userScores = (request, response) => {
-  pool.query('select SUM(count) from score where user_id = &1 ',[request.body.id], (error, results) => {
+  pool.query('select SUM(count) from score where user_id=$1 ',[request.body.id], (error, results) => {
     if (error) {
       throw error
     }
