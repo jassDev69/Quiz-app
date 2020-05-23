@@ -1,22 +1,22 @@
 const Pool = require('pg').Pool
 
 //local
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Quiz',
-  password: 'admin321',
-  port: 5432,
-});
-
-//hosted site
 // const pool = new Pool({
-//   user: 'hmmhttvxjjtjoc',
-//   host: 'ec2-18-232-143-90.compute-1.amazonaws.com',
-//   database: 'd84kshiodli11c',
-//   password: '41fbd1d4417fac6fb83b37c0b5652fd571ea56cd803e1cc800cf0599d00a9154',
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'Quiz',
+//   password: 'admin321',
 //   port: 5432,
 // });
+
+//hosted site
+const pool = new Pool({
+  user: 'hmmhttvxjjtjoc',
+  host: 'ec2-18-232-143-90.compute-1.amazonaws.com',
+  database: 'd84kshiodli11c',
+  password: '41fbd1d4417fac6fb83b37c0b5652fd571ea56cd803e1cc800cf0599d00a9154',
+  port: 5432,
+});
 
 // fetching question data from DB
 const getAllQuestion = (request, response) => {
