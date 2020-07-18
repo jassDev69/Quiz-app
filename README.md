@@ -1,14 +1,13 @@
 # Quiz-app
 ## Contents
 
-- [How it works](#idea)
 - [How are we doing](#technologies)
 - [Features](#features)
 - [Get in touch](#contact)
 
 ## Technologies 
 
-  HTML, CSS, Wordpress, JavaScript
+  HTML5, CSS3, ReactJS, NodeJS, PostgreSQL
 
 ## Features
 
